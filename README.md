@@ -1,7 +1,3 @@
 # level-data-1a
 
-allison
-Maya
-Louise Marie
-Sagar Kapri
-
+Read [process_data.ipynb](./process_data.ipynb) to set up the file structure and sync data.
