@@ -22,9 +22,7 @@ The table below shows which features and labels are included in each dataframe.
 - `proficient_diff` - whether this label is present
 
 
-| File name |  Feature year | Label year |  schools | courseRosters |  vendorUsage | is_proficient | proficient_score | proficient_diff |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| actEnglish_11.csv | 2017 | 2018 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| actMath_11.csv    | 2017 | 2018 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| actReading_11.csv | 2017 | 2018 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
-| actScience_11.csv | 2017 | 2018 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| File name |  Feature year | Label year | Feature grade |  schools | courseRosters |  vendorUsage | is_proficient | proficient_score | proficient_diff |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| act*_11.csv | 2017 | 2018 | 11 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| scantron*_38.csv | 2017 | 2018 | 3–8 | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
