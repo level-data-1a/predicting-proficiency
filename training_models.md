@@ -16,10 +16,10 @@
 | Linear regression | 45 | 2017 | 3-8 | scantronMath | past_proficiency | 1 | `proficient_score` | | | RMSE=0.09, R^2=0.23 | Concerned about overfitting | Maya | 
 | Linear regression | 45 | 2017 | 3-8 | scantronReading | past_proficiency | 1 | `proficient_score` | | | RMSE=0.04, R^2=0.85 |  Concerned about overfitting | Maya |
 | Logistic regression | 18 | 2023 | 11 | actMath | schools, vendors, encoded courses | 23 | `is_proficient` | 0.7198 | | Log loss: 0.5703 | |  Maya |
-| Decision tree | 45 | 2017 | 11 | actReading | ? | 242 | `proficient_score` | | | RMSE=0.2273, R^2=0.49046499 | | Louise Marie | 
-| Decision tree | 45 | 2017 | 3–8 | scantronReading | ? | 142 | `proficient_score` | | | RMSE=0.0393, R^2=0.8632 | | Louise Marie | 
-| Random forest | 45 | 2017 | 11 | actReading | ? | 242 | `proficient_score` | | | RMSE=0.1802, R^2=0.6795 | | Louise Marie | 
-| Random forest | 45 | 2017 | 11 | scantronReading | ? | 140 | `proficient_score` | | | RMSE=0.0393, R^2=0.8632 | | Louise Marie | 
+| Decision tree | 45 | 2017 | 11 | actReading | schools, vendors, courses  | 241 | `proficient_score` | | | RMSE=0.2273, R^2=0.49046499 | | Louise Marie | 
+| Decision tree | 45 | 2017 | 3–8 | scantronReading | schools, vendors, courses, past proficiency | 140| `proficient_score` | | | RMSE=0.0393, R^2=0.8632 | | Louise Marie | 
+| Random forest | 45 | 2017 | 11 | actReading | schools, vendors, courses | 242 | `proficient_score` | | | RMSE=0.1802, R^2=0.6795 | | Louise Marie | 
+| Random forest | 45 | 2017 | 3-8 | scantronReading | schools, vendors, courses, past proficiency | 140 | `proficient_score` | | | RMSE=0.0393, R^2=0.8632 | | Louise Marie | 
 
 
 **Issues:**
