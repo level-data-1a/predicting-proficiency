@@ -5,3 +5,4 @@
     - F1
     - Accuracy
     - A confusion matrix
+- files without the ending 'binary' have more models other than XGBoost, but XGBoost yielded the best results. 
