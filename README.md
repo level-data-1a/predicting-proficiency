@@ -5,6 +5,10 @@
 
 # Predicting Proficiency 
 ## Table of Contents
+1. [Project Description](#projectdescription)
+2. [Results and Key Findings](#resultsandkeyfindings)
+4. [Potential Next Steps](#evaluation)
+5. [Usage](#usage)
 ## Project Description
 ### Overview, Objectives, and Goals
 For a given district:
