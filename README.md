@@ -33,7 +33,14 @@ Using benchmark threshold and student score, we created two data types:
 For example, if a student's score is 21 and the proficiency threshold is 18, then `is_proficient` will be True and `proficient_score` is 1.1666.
 
 Then, for a given student, grade level, and subject, we merged dataframes in the following manner: 
+| studentId |...| subgroup_ethnicity |...| course_Algebra II |...| school_A |...|iready_math |...| proficient_score |
+|-----------|---|--------------------|---|-------------------|---|----------|---|-------------|---|------------------|
+| 45440     |   | 1                  |   |1                  |   | 0        |   | 1           |   |0.941176         |
+| 45054     |   |0                   |   | 0                 |   |1         |   | 0           |   |0.529412         |
 
+1 = a student is part of a subgroup, course, school, etc.  
+0 = a student is not part of a subgroup, course, school, etc.   
+Label: `proficient_score`
 
 * **Results and Key Findings**
   1. About the data:
