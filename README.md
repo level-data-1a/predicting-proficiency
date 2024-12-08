@@ -61,8 +61,82 @@ In the raw data we were given, original course names had formats such as `Englis
    3 = Above grade level  
 4. Create binary feature for electives
 
+##### PCA
+* What is PCA?
+  * PCA reduces the number of columns (features) in a dataset.
+* How does it work?
+  * Combines original columns into fewer “principal components.”
+  * Captures the most important differences (variation) in the data.
+  * We kept 80% of the variation and removed excess columns.
+* Why do we use it?
+  * Hundreds of columns make data hard to analyze.
+  * Removing unnecessary components didn’t hurt performance.
+  * Eliminates redundancy and simplifies the data.
 
-* **Results and Key Findings**
+Outcomes of PCA
+| **Metric**                        | **ACT_math** | **ACT_reading** | **Scantron_Math** | **Scantron_reading** |
+|-----------------------------------|--------------|-----------------|-------------------|----------------------|
+| **Columns in original dataframe** | 240          | 240             | 139               | 139                  |
+| **Columns in dataframe after PCA**| 109          | 109             | 46                | 46                   |
+
+Before: 142 Features
+| **studentId** | **course_English 5** |...| **course_LifeSci Gr7** |
+|---------------|----------------------|---|------------------------|
+| 43588         | 1                    |   | 0                      |
+| 30983         | 0                    |   | 1                      |
+
+After: 26 Features
+| **studentId** | **subject_english** |...| **subject_science** |
+|---------------|----------------------|---|------------------------|
+| 43588         | 2                    |   | 0                      |
+| 30983         | 0                    |   | 3                      |
+
+
+### Exploratory Data Analysis
+#### Correlations
+We used correlation matrices to find how related different columns of our data frames are. Here are some of our key findings from this process:  
+* Strong connections between lunch status, gender, and ethnicity.
+* ACT sections (e.g., math & reading) are closely related.
+* Doing well in one ACT section often means doing well in another.
+* Similar pattern for Scantron Math and Reading exams (not shown).
+
+#### Class Imbalance
+We found that only about 15-20% of students represented in the dataset are proficient (i.e., score at least the benchmark). This impacted our models’ ability to predict proficient students. 
+
+### Modeling
+#### Model Selection
+We had three main requirements when choosing which machine learning models we wanted to use to predict proficiency
+1. First, given that our intended audience is school administrators and educators, who likely do not have a data science background, we wanted our models to be interpretable. 
+2. Second, we also decided to look at proficiency as a continuous label instead of a simple binary, yes or no label.
+   After discussing with our Challenge Advisors and TA, we thought that using a continuous label would be more beneficial because it accounts for different levels of proficiency.
+3. The third criteria is that we wanted our models to fit well to the data we were given, meaning they do not underfit (do not learn enough complexities) or overfit (learn too much of the training data’s complexities). It is important to note that model training and tuning also has an impact on how the model performs in the end.  
+Ultimately, we decided to train linear regression, decision tree, random forest, and gradient boosted decision tree models.
+
+#### Model Training
+Our approach: Trying many different models and seeing which ones performed best.  
+Here is our [Model spreadsheet](https://docs.google.com/spreadsheets/d/17sNVnDQ4ZQKMnNjwo3k7TYPvQMVXpdHDBMfrAvNe6Jo/edit?usp=sharing) - contains metadata, metrics for each model
+
+Here are our highest performing models:  
+Note that accuracy and macro F1 scores are computed after converting the continuous result into a binary value (e.g. 1.6 → true)    
+
+##### Math, reading for grades 3-8 (Using Scantron Math/Reading data)
+| **Model Name**            | **Features**                                           | **Evaluation Metrics**                                | **Insights**                                                                                                                                           |
+|---------------------------|--------------------------------------------------------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Simple Linear Regression** | Past proficiency                                      | **Math:**<br>RMSE: 0.06<br>R^2: 0.44<br>Accuracy: 0.87<br>Macro F1: 0.83<br>**Reading:**<br>RMSE: 0.07<br>R^2: 0.59<br>Accuracy: 0.87<br>Macro F1: 0.86 | - Only 1 feature for this model because adding features either didn’t change or worsened RMSE and R^2 values.<br>- Predicts poorly for students with better or worse future scores.<br>- Treated as a baseline model for scantron math/reading. |
+| **XG Boost**               | Schools, courses, vendor usage, past proficiency      | RMSE: 0.06<br>R^2: 0.59<br>Accuracy: 0.88<br>Macro F1: 0.87 | - Past_proficient_score is positively correlated with the label.<br>- Average performance varies by grade level.<br>- Co-enrollment in advanced classes.<br>- Scantron Math had no advanced courses in key features. |
+| **Decision Tree**          | Schools, courses, vendor usage                        | RMSE: 0.07<br>R^2: 0.5<br>Accuracy: 0.87<br>Macro F1: 0.87 | - Encoded versions performed slightly better than PCA.<br>- School comes up as an important feature.                                                     |
+| **Random Forest**          | Schools, courses, vendor usage                        | RMSE: 0.05<br>R^2: 0.5<br>Accuracy: 0.86<br>Macro F1: 0.86 | - Decision Tree performed slightly better.<br>- PCA performed better than encoded.<br>- Schools play an important factor.                                    |
+
+
+##### Math, reading for grade 11 (Using ACT Math/Reading data)
+| **Model Name**            | **Features**                                           | **Evaluation Metrics**                                | **Insights**                                                                                                                                           |
+|---------------------------|--------------------------------------------------------|------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **XG Boost**               | Schools, courses, vendor usage                        | RMSE: 0.08<br>R^2: 0.6<br>Accuracy: 0.79<br>Macro F1: 0.82 | - **Positive Correlations with Proficiency:**<br>  - iReady Math (value of 1) positively correlates with ACT math scores.<br>  - Advanced courses with positive correlations: course_Alg II/Trig, course_Eng Gr10 Adv, course_USHis I Adv, course_Geometry Adv, course_ChemistryAdv.<br> - **Negative Correlations with Proficiency:**<br>  - Courses with negative correlations: Algebra I B, Physical Science, English Grade 10. |
+| **Decision Tree**          | Schools, courses, vendor usage                        | RMSE: 0.18<br>R^2: 0.38<br>Accuracy: 0.79<br>Macro F1: 0.87 | - In the ACT Math model, science courses were important.<br>- In the ACT Reading model, STEM courses were more important than English 10 enrollment. |
+| **Random Forest**          | Schools, courses, vendor usage                        | RMSE: 0.16<br>R^2: 0.5<br>Accuracy: 0.80<br>Macro F1: 0.79 | - Random Forest performs better than Decision Trees. |
+
+
+## Results and Key Findings
   1. About the data:
      * A majority of students are not proficient (according to the benchmarks)
      * We have enough data to train predictive models for students in grades 3–8 and 11
