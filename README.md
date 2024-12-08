@@ -145,8 +145,7 @@ Note that accuracy and macro F1 scores are computed after converting the continu
   4. We can predict proficiency for the stated demographics with over 70% accuracy in most cases
   5. Our models have a harder time predicting proficient students 
 
-* **Visualizations**
-* **Potential Next Steps**
+## Potential Next Steps 
   1. Add additional data to improve accuracy and representation
      * Performance on courses
      * Complete demographic data
@@ -158,13 +157,13 @@ Note that accuracy and macro F1 scores are computed after converting the continu
      * Different tiers of proficiency
      * Different data sources
 
-## Installation
-
 ## Usage
-
-## Contributing
-
-## License
+* The `dataframes` folder contains all of the csv files that we used to train models on
+* Individual models are in their respective folder
+  * E.g. You can find all decision tree models in the `decision tree` folder
+* Inside of each folder, you will find Jupyter Notebooks for each dataframe that the model was trained on
+* You can download and run the Jupyter Notebooks on an IDE of your choosing (we used Visual Studio Code)
+ 
 
 ## Credits and Acknowledgements 
 Student Team: Allison Huang, Manjari Muruganandam, Louise Marie Maganto, Maya Patel 
