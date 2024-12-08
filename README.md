@@ -3,8 +3,9 @@
 - `[make_dfs.ipynb](./make_dfs.ipynb)` - make the dataframes from data
 - [Model spreadsheet](https://docs.google.com/spreadsheets/d/17sNVnDQ4ZQKMnNjwo3k7TYPvQMVXpdHDBMfrAvNe6Jo/edit?usp=sharing) - contains metadata, metrics for each model
 
-## Predicting Proficiency 
-* **Project Overview, Objectives, and Goals:**
+### Predicting Proficiency 
+## Project Description
+* **Overview, Objectives, and Goals:**
   For a given district:
   Identify which factors most strongly contribute to student proficiency (subject-based)
   Utilize factors to build predictive models that flag students at risk of falling below proficiency level
@@ -50,3 +51,6 @@
 ## License
 
 ## Credits and Acknowledgements 
+Student Team: Allison Huang, Manjari Muruganandam, Louise Marie Maganto, Maya Patel
+Thank you to our TA, Blessing Nwogu, and Challenge Advisors from Level Data, Pradnya Bhawalkar and Eddie Shek, for supporting us through this project!
+
