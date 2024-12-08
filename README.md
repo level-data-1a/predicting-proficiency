@@ -6,9 +6,14 @@
 # Predicting Proficiency 
 ## Table of Contents
 1. [Project Description](#project-description)
-2. [Results and Key Findings](#results-and-key-findings)
+    1. [Overview](#overview-objectives-and-goals)
+    2. [Methodology](#methodology)
+    3. [Exploratory Data Analysis](#exploratory-data-analysis)
+    4. [Modeling](#modeling)
+3. [Results and Key Findings](#results-and-key-findings)
 4. [Potential Next Steps](#potential-next-steps)
 5. [Usage](#usage)
+6. [Credits and Acknowledgements](#credits-and-acknowledgements)
 ## Project Description
 ### Overview, Objectives, and Goals
 For a given district:
