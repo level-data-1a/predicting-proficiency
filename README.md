@@ -19,6 +19,20 @@ Scope: Predict subject-specific proficiency given past year’s data and grade l
 
 ### Methodology
 #### Raw Dataset Overview
+| **Data Tables Provided** | **Data Attributes** |
+|--------------------------|---------------------|
+| - scores<br>- benchmarks<br>- courseSections<br>- courseSectionRosters<br>- schools<br>- vendorUsage | - District 18, 45 (where 18 is a superset of 45)<br>- student ID (all data tables)<br>- year (all data tables)<br>- grade level (all data tables)<br>- demographics (ethnicity, ELL, etc.) - scores<br>- course enrollment - courseRosterSections, courseRosters<br>- school - schools (anonymized)<br>- vendor usage - vendorUsage<br>**Note:** Data is anonymized |
+
+#### Data Usage
+Using benchmark threshold and student score, we created two data types:
+Boolean — `is_proficient`
+Continuous — `proficient_score` (score/threshold)
+< 1 is not proficient, >= 1 is proficient
+Captures “how” proficient a student is
+For example, if a student's score is 21 and the proficiency threshold is 18, then `is_proficient` will be True and `proficient_score` is 1.1666.
+
+
+
 * **Results and Key Findings**
   1. About the data:
      * A majority of students are not proficient (according to the benchmarks)
