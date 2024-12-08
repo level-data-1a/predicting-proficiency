@@ -33,14 +33,34 @@ Using benchmark threshold and student score, we created two data types:
 For example, if a student's score is 21 and the proficiency threshold is 18, then `is_proficient` will be True and `proficient_score` is 1.1666.
 
 Then, for a given student, grade level, and subject, we merged dataframes in the following manner: 
-| studentId |...| subgroup_ethnicity |...| course_Algebra II |...| school_A |...|iready_math |...| proficient_score |
-|-----------|---|--------------------|---|-------------------|---|----------|---|-------------|---|------------------|
-| 45440     |   | 1                  |   |1                  |   | 0        |   | 1           |   |0.941176         |
-| 45054     |   |0                   |   | 0                 |   |1         |   | 0           |   |0.529412         |
+| studentId | subgroup_ethnicity |...| course_Algebra II |...| school_A |...|iready_math |...| proficient_score |
+|-----------|--------------------|---|-------------------|---|----------|---|-------------|---|------------------|
+| 45440     | 1                  |   |1                  |   | 0        |   | 1           |   |0.941176         |
+| 45054     | 0                   |   | 0                 |   |1         |   | 0           |   |0.529412         |
 
 1 = a student is part of a subgroup, course, school, etc.  
 0 = a student is not part of a subgroup, course, school, etc.   
 Label: `proficient_score`
+
+#### Final Datasets
+| **Math and Reading Proficiency for Grades 3–8** | **Subject Proficiency for Grade 11** |
+|--------------------------------------------------|--------------------------------------|
+| - scantronMath, scantronReading<br>- 2017 features, 2018 labels<br>- Features: courses, schools, vendors, past_proficiency<br>- ~20,000 students in each DataFrame | - ACT (Reading, English, Math, Science)<br>- 2017 features, 2018 labels<br>- Features: courses, schools, vendors<br>- ~2,500 students in each DataFrame |
+
+#### Dimension Reduction
+We used two different methods to reduce the number of columns in our final dataframes: Encoding and Principal Component Analysis (PCA)
+
+##### Encoding
+In the raw data we were given, original course names had formats such as `English 5`, `LifeSci Gr7` etc. To encode this information in our dataframes, we processed it in the following way: 
+1. Extract grade level
+2. Create subject areas using keywords
+3. Create feature for course
+   0 = Not enrolled  
+   1 = Below grade level  
+   2 = At grade level  
+   3 = Above grade level  
+4. Create binary feature for electives
+
 
 * **Results and Key Findings**
   1. About the data:
