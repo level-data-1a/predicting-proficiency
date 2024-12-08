@@ -6,18 +6,19 @@
 # Predicting Proficiency 
 ## Table of Contents
 ## Project Description
-* **Overview, Objectives, and Goals:**
-  For a given district:
-  Identify which factors most strongly contribute to student proficiency (subject-based)
-  Utilize factors to build predictive models that flag students at risk of falling below proficiency level
+### Overview, Objectives, and Goals
+For a given district:
+Identify which factors most strongly contribute to student proficiency (subject-based)
+Utilize factors to build predictive models that flag students at risk of falling below proficiency level
 
-  For example:
-  Our ML model could help us flag a current 11th grader as at risk of falling below proficiency in math based on 10th grade features  
-  Educators can then provide extra help / attention / services  
+For example:
+Our ML model could help us flag a current 11th grader as at risk of falling below proficiency in math based on 10th grade features  
+Educators can then provide extra help / attention / services  
 
-  Scope: Predict subject-specific proficiency given past year’s data and grade level (potentially generalize across grade levels)
+Scope: Predict subject-specific proficiency given past year’s data and grade level (potentially generalize across grade levels)
 
-* **Methodology**
+### Methodology
+#### Raw Dataset Overview
 * **Results and Key Findings**
   1. About the data:
      * A majority of students are not proficient (according to the benchmarks)
