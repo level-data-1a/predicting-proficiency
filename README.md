@@ -32,6 +32,7 @@ Using benchmark threshold and student score, we created two data types:
 
 For example, if a student's score is 21 and the proficiency threshold is 18, then `is_proficient` will be True and `proficient_score` is 1.1666.
 
+Then, for a given student, grade level, and subject, we merged dataframes in the following manner: 
 
 
 * **Results and Key Findings**
