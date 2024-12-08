@@ -5,7 +5,7 @@
 
 # Predicting Proficiency 
 ## Table of Contents
-1. [Project Description](#projectdescription)
+1. [Project Description](#ProjectDescription)
 2. [Results and Key Findings](#resultsandkeyfindings)
 4. [Potential Next Steps](#evaluation)
 5. [Usage](#usage)
