@@ -13,7 +13,7 @@
 
 - any files containing the phrase "main_model" is the model used to predict proficiency. It will contain PCA, and a continuous label (called 'proficient_score')
 
-- ACT reading has preliminary outlier deteciton added in the main model
+- ACT reading has preliminary outlier deteciton added in the main model. There is one older version of outlier detection (which has all of the code that didn't work). 
 
 - the file laveled "Clustering_original_scores_df" aims to use clustering with a different dataframe to identify key features. it does not use the same dataset as the other models.
   
