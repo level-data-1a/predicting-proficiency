@@ -1,7 +1,8 @@
 # level-data-1a
-- `[process_data.ipynb](./process_data.ipynb)` - set up the file structure and sync data
-- `[make_dfs.ipynb](./make_dfs.ipynb)` - make the dataframes from data
+- `[process_data.ipynb](./process_data.ipynb)` - converts provided data from .json to .csv and renames files for consistency
+- `[make_dfs.ipynb](./make_dfs.ipynb)` - merges provided data into dataframes which we used to train models (includes creating encoded versions of dataframes)
 - [Model spreadsheet](https://docs.google.com/spreadsheets/d/17sNVnDQ4ZQKMnNjwo3k7TYPvQMVXpdHDBMfrAvNe6Jo/edit?usp=sharing) - contains metadata, metrics for each model
+   - Within this repo, individual models can be found at `architecture/dataframe.ipynb`. All models are trained on dataframes within `dataframes/`.
 
 # Predicting Proficiency 
 ## Table of Contents
